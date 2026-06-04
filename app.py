@@ -7,11 +7,13 @@ app = Flask(__name__)
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
-
 @app.route("/")
+def landing():
+    return render_template("landing.html")
+
+@app.route("/chat-ui")
 def home():
     return render_template("index.html")
-
 @app.route("/chat", methods=["POST"])
 def chat():
     try:
