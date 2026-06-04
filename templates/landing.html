@@ -3,87 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura AI - Futuristic AI Assistant</title>
+    <title>Aura AI - Personal AI Assistant</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo">Aura<span>AI</span></div>
-    <a href="/chat-ui" class="nav-btn">Launch App</a>
+    <div class="brand">
+        <div class="brand-icon">A</div>
+        <span>Aura AI</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="/chat-ui" class="nav-btn">Launch App</a>
+    </div>
 </nav>
 
 <section class="hero">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+    <div class="hero-badge">AI Chatbot • Voice Assistant • Chat History</div>
 
-    <div class="hero-content">
-        <p class="badge">🚀 Powered by Groq + Llama</p>
-        <h1>Your Futuristic AI Voice Assistant</h1>
-        <p class="subtitle">
-            Aura AI is a smart chatbot with voice input, real-time AI responses,
-            chat history, and a premium dark interface.
-        </p>
+    <h1>Your Personal AI Assistant</h1>
 
-        <div class="hero-buttons">
-            <a href="/chat-ui" class="primary-btn">Start Chatting</a>
-            <a href="#features" class="secondary-btn">Explore Features</a>
+    <p>
+        Aura AI helps you chat, learn, write, code, and explore ideas with a clean,
+        fast, and modern AI experience.
+    </p>
+
+    <div class="hero-actions">
+        <a href="/chat-ui" class="primary-btn">Launch Aura AI</a>
+        <a href="#features" class="secondary-btn">View Features</a>
+    </div>
+
+    <div class="preview-card">
+        <div class="preview-top">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="chat-preview">
+            <div class="ai-msg">How can I help you today?</div>
+            <div class="user-msg">Explain machine learning simply.</div>
+            <div class="ai-msg">
+                Machine learning is a way for computers to learn patterns from data
+                and make predictions or decisions without being manually programmed.
+            </div>
         </div>
     </div>
 </section>
 
 <section class="features" id="features">
-    <h2>Powerful Features</h2>
+    <div class="section-heading">
+        <h2>Built for smart conversations</h2>
+        <p>Everything needed for a modern AI assistant project.</p>
+    </div>
 
     <div class="feature-grid">
-        <div class="card">
-            <h3>🤖 AI Chatbot</h3>
-            <p>Ask anything and get intelligent real-time responses using advanced LLM technology.</p>
+        <div class="feature-card">
+            <h3>🤖 Real AI Chat</h3>
+            <p>Connected with Groq Llama models for real-time intelligent responses.</p>
         </div>
 
-        <div class="card">
-            <h3>🎤 Voice Assistant</h3>
-            <p>Speak your questions directly and interact naturally with Aura AI.</p>
+        <div class="feature-card">
+            <h3>🎤 Voice Input</h3>
+            <p>Ask questions using your voice directly from the browser.</p>
         </div>
 
-        <div class="card">
+        <div class="feature-card">
+            <h3>🔊 Read Aloud</h3>
+            <p>AI responses can be converted into speech for a voice assistant feel.</p>
+        </div>
+
+        <div class="feature-card">
             <h3>💬 Chat History</h3>
-            <p>Recent chats are saved locally so you can revisit previous conversations.</p>
+            <p>Recent conversations are saved in the browser for quick access.</p>
         </div>
 
-        <div class="card">
-            <h3>🌙 Dark UI</h3>
-            <p>A modern ChatGPT-style dark interface with clean UX and responsive layout.</p>
+        <div class="feature-card">
+            <h3>🌙 Dark Interface</h3>
+            <p>Clean ChatGPT-style dark UI designed for focus and readability.</p>
         </div>
 
-        <div class="card">
-            <h3>⚡ Fast Responses</h3>
-            <p>Integrated with Groq for fast AI response generation and smooth interaction.</p>
-        </div>
-
-        <div class="card">
-            <h3>📱 Responsive</h3>
-            <p>Works on laptop, tablet, and mobile with a clean adaptive layout.</p>
+        <div class="feature-card">
+            <h3>🚀 Deployed Online</h3>
+            <p>Hosted publicly so anyone can access the assistant from any device.</p>
         </div>
     </div>
 </section>
 
-<section class="about">
-    <h2>Why Aura AI?</h2>
-    <p>
-        Aura AI is built as a full-stack AI web application using Python Flask,
-        HTML, CSS, JavaScript, Groq API, and Render deployment. It demonstrates
-        real-world AI integration, frontend-backend communication, and modern UI/UX design.
-    </p>
+<section class="about" id="about">
+    <div class="about-box">
+        <h2>About Aura AI</h2>
+        <p>
+            Aura AI is a full-stack AI chatbot project built with Python Flask,
+            HTML, CSS, JavaScript, Groq API, GitHub, and Render. It demonstrates
+            frontend-backend communication, API integration, responsive design,
+            voice features, and cloud deployment.
+        </p>
+    </div>
 </section>
 
 <section class="cta">
-    <h2>Ready to try Aura AI?</h2>
-    <a href="/chat-ui" class="primary-btn">Launch Aura AI</a>
+    <h2>Start using Aura AI now</h2>
+    <p>Experience a clean and powerful AI assistant built from scratch.</p>
+    <a href="/chat-ui" class="primary-btn">Open Chatbot</a>
 </section>
 
 <footer>
-    <p>Built by Ayush Agarwal | AI Chatbot Project</p>
+    <p>Built by Ayush Agarwal • Aura AI Project</p>
 </footer>
 
 </body>
