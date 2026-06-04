@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura AI Assistant</title>
+    <title>Aura AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="chat-wrapper">
-    <div class="chat-card">
-        <div class="chat-header">
-            <div class="logo">🤖</div>
-            <div>
-                <h1>Aura AI</h1>
-                <p>Smart Personal AI Assistant</p>
-            </div>
-        </div>
+<div class="app">
 
-        <div class="chat-box" id="chatBox">
-            <div class="message bot-message">
-                <strong>Aura AI</strong><br>
-                Hello Ayush! Ask me anything.
-            </div>
-        </div>
+    <header class="topbar">
+        <h2>Aura AI</h2>
+        <span>Powered by Groq</span>
+    </header>
 
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="Ask me anything...">
-            <button onclick="sendMessage()">Send</button>
+    <main class="chat-area" id="chatBox">
+        <div class="welcome">
+            <h1>How can I help you today?</h1>
+            <p>Ask anything, generate ideas, write code, or learn concepts.</p>
         </div>
+    </main>
+
+    <div class="input-wrapper">
+        <div class="input-box">
+            <input type="text" id="userInput" placeholder="Message Aura AI...">
+            <button onclick="sendMessage()">➤</button>
+        </div>
+        <p class="note">Aura AI may make mistakes. Check important information.</p>
     </div>
+
 </div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>

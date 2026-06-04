@@ -5,11 +5,18 @@ async function sendMessage() {
 
     if (message === "") return;
 
+    const welcome = document.querySelector(".welcome");
+    if (welcome) welcome.remove();
+
     chatBox.innerHTML += `<div class="message user">${message}</div>`;
     input.value = "";
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    chatBox.innerHTML += `<div class="message bot-message typing"><strong>Aura AI</strong><br>Typing...</div>`;
+    chatBox.innerHTML += `
+        <div class="message bot-message typing">
+            <strong>Aura AI</strong><br>Thinking...
+        </div>
+    `;
 
     const response = await fetch("/chat", {
         method: "POST",
