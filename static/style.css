@@ -190,6 +190,22 @@ body {
 .bot-content {
     padding-top: 4px;
     white-space: pre-wrap;
+    width: 100%;
+}
+
+.speak-btn {
+    margin-top: 10px;
+    padding: 7px 12px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background: #2f2f2f;
+    color: #ececec;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.speak-btn:hover {
+    background: #3a3a3a;
 }
 
 .typing-dots span {
@@ -227,6 +243,7 @@ body {
     display: flex;
     align-items: flex-end;
     padding: 10px;
+    gap: 8px;
 }
 
 .prompt-box textarea {
@@ -245,15 +262,36 @@ body {
     color: #aaa;
 }
 
-.prompt-box button {
+.send-btn,
+.voice-btn {
     width: 42px;
     height: 42px;
     border: none;
     border-radius: 50%;
-    background: #ffffff;
-    color: #111;
     cursor: pointer;
     font-size: 18px;
+    flex-shrink: 0;
+}
+
+.send-btn {
+    background: #ffffff;
+    color: #111;
+}
+
+.voice-btn {
+    background: #10a37f;
+    color: white;
+}
+
+.voice-btn.listening {
+    background: #ef4444;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
 }
 
 .prompt-wrapper p {
@@ -291,5 +329,9 @@ body {
 
     .user {
         max-width: 90%;
+    }
+
+    .topbar span {
+        display: none;
     }
 }

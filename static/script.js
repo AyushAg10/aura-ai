@@ -1,8 +1,11 @@
 const input = document.getElementById("userInput");
 const chatBox = document.getElementById("chatBox");
 const historyList = document.getElementById("historyList");
+const micBtn = document.getElementById("micBtn");
+const voiceStatus = document.getElementById("voiceStatus");
 
 let currentChat = [];
+let latestBotReply = "";
 
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
@@ -52,13 +55,15 @@ function openHistory(index) {
 }
 
 function newChat() {
+    window.speechSynthesis.cancel();
     chatBox.innerHTML = `
         <div class="welcome" id="welcome">
             <h1>How can I help you today?</h1>
-            <p>Ask anything, write code, learn concepts, or generate ideas.</p>
+            <p>Type or use your voice to ask anything.</p>
         </div>
     `;
     currentChat = [];
+    latestBotReply = "";
 }
 
 function addUserMessage(message) {
@@ -67,10 +72,16 @@ function addUserMessage(message) {
 }
 
 function addBotMessage(message) {
+    latestBotReply = message;
+
     chatBox.innerHTML += `
         <div class="message bot-message">
             <div class="bot-avatar">A</div>
-            <div class="bot-content">${escapeHTML(message)}</div>
+            <div class="bot-content">
+                ${escapeHTML(message)}
+                <br>
+                <button class="speak-btn" onclick="speakText(\`${escapeForJS(message)}\`)">🔊 Read aloud</button>
+            </div>
         </div>
     `;
     chatBox.scrollTop = chatBox.scrollHeight;
@@ -97,6 +108,15 @@ function escapeHTML(text) {
     const div = document.createElement("div");
     div.innerText = text;
     return div.innerHTML;
+}
+
+function escapeForJS(text) {
+    return text
+        .replace(/\\/g, "\\\\")
+        .replace(/`/g, "\\`")
+        .replace(/\$/g, "\\$")
+        .replace(/\n/g, "\\n")
+        .replace(/\r/g, "");
 }
 
 async function sendMessage() {
@@ -137,6 +157,61 @@ async function sendMessage() {
         removeTyping();
         addBotMessage("Something went wrong. Please try again.");
     }
+}
+
+function speakText(text) {
+    if (!("speechSynthesis" in window)) {
+        alert("Text-to-speech is not supported in this browser.");
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speech.rate = 1;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+}
+
+function startVoiceInput() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+        alert("Voice input is not supported in this browser. Please use Chrome.");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    micBtn.classList.add("listening");
+    voiceStatus.innerText = "Listening... speak now";
+
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        input.value = transcript;
+        voiceStatus.innerText = "Voice captured. Sending message...";
+        micBtn.classList.remove("listening");
+        sendMessage();
+    };
+
+    recognition.onerror = function() {
+        voiceStatus.innerText = "Voice input failed. Try again.";
+        micBtn.classList.remove("listening");
+    };
+
+    recognition.onend = function() {
+        micBtn.classList.remove("listening");
+        if (voiceStatus.innerText === "Listening... speak now") {
+            voiceStatus.innerText = "Click 🎤 to speak. Aura AI can also read answers aloud.";
+        }
+    };
 }
 
 input.addEventListener("keydown", function(e) {

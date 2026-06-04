@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura AI</title>
+    <title>Aura AI Voice Assistant</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -24,23 +24,24 @@
     <main class="main">
         <header class="topbar">
             <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-            <h3>Aura AI Assistant</h3>
+            <h3>Aura AI Voice Assistant</h3>
             <span>Groq Llama</span>
         </header>
 
         <section class="chat-area" id="chatBox">
             <div class="welcome" id="welcome">
                 <h1>How can I help you today?</h1>
-                <p>Ask anything, write code, learn concepts, or generate ideas.</p>
+                <p>Type or use your voice to ask anything.</p>
             </div>
         </section>
 
         <div class="prompt-wrapper">
             <div class="prompt-box">
+                <button class="voice-btn" id="micBtn" onclick="startVoiceInput()">🎤</button>
                 <textarea id="userInput" placeholder="Message Aura AI..." rows="1"></textarea>
-                <button onclick="sendMessage()">➤</button>
+                <button class="send-btn" onclick="sendMessage()">➤</button>
             </div>
-            <p>Aura AI may make mistakes. Verify important information.</p>
+            <p id="voiceStatus">Click 🎤 to speak. Aura AI can also read answers aloud.</p>
         </div>
     </main>
 </div>
